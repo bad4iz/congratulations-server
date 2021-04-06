@@ -18,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 //    return view('welcome');
 //});
 
+
+Auth::routes();
 Route::get('/{any}', [SinglePageController::class, 'index'])->where('any', '.*');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
