@@ -8,14 +8,19 @@ type Query {
     users: [User!]! @paginate(defaultCount: 10)
     events: [Event!]! @all
     eventTypes: [EventType!]! @all
+
+    findUser(email: String): [User]
     user(id: ID @eq): User @find
     event(id: ID @eq): Event @find
+
+    eventType(code: String): EventType @find
 }
 
 type User {
     id: ID!
     name: String!
     email: String!
+    avatar: String
     created_at: DateTime!
     updated_at: DateTime!
 }
@@ -33,4 +38,15 @@ type EventType {
     slug: String!
     color: String!
     events: [Event] @hasMany
+}
+
+
+type Mutation {
+    createUser(name: String!, email: String!, password: String!, avatar: String): User @create
+    updateUser(id: ID, email: String, password: String): User @update
+#    deleteUser(id: ID): User @delete
+
+    createEvent(title: String, description: String, user_id: Int!, day: Int!, month: Int!): Event @create
+    updateEvent(id: ID, title: String, description: String, userId: Int!, day: Int!, month: Int!): Event @update
+#    deleteEvent(id: ID): Event @delete
 }
