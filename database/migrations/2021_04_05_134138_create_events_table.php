@@ -18,8 +18,8 @@ class CreateEventsTable extends Migration
             $table->unsignedInteger('event_type_id')->default(1);
             $table->unsignedInteger('user_id');
             $table->date('start_date')->nullable();
-            $table->string('title')->nullable();
-            $table->text('description')->nullable();
+            $table->string('title')->default('день рождение');
+            $table->text('description')->default('день рождение');
             $table->date('end_date')->nullable();
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
