@@ -15,7 +15,7 @@ class SeedEventTypesTable extends Migration
     public function up()
     {
         DB::table('event_types')->insertGetId([
-            'name' => 'день рождения',
+            'name' => 'день рождение',
             'slug' => 'birthday',
             'color' => 'green',
         ]);
